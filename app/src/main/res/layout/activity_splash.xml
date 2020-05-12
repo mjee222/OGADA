@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/color_01"
+    tools:context=".SplashActivity">
+
+    <ImageView
+        android:id="@+id/splash_logo"
+        android:layout_width="250dp"
+        android:layout_height="260dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/logo"/>
+
+    <TextView
+        android:id="@+id/splash_text01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="편리한 입국 신고서 작성"
+        android:textStyle="bold"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/splash_text02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oh!가다"
+        android:textStyle="bold"
+        android:textColor="@color/color_white"
+        android:textSize="65dp"/>
+
+</LinearLayout>
