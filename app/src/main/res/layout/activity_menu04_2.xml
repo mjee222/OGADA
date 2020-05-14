@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/color_04"
-    tools:context=".menu01Activity_3">
+    tools:context=".menu04Activity_2">
 
+    <!-- 여권 별명 -->
     <TextView
-        android:id="@+id/menu01_3_text01"
+        android:id="@+id/menu04_2_text01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -19,25 +20,31 @@
         android:layout_marginLeft="10dp"
         android:padding="8dp"
         android:background="@color/color_01"
-        android:text="따라서 작성하세요!"
+        android:text="민정이의 여권"
         android:textSize="30dp"
         android:textColor="@color/color_03"
         android:textStyle="bold"/>
 
-    <!--입국서 이미지 출력할 이미지뷰-->
-    <ImageView
-        android:id="@+id/menu01_3_imageview"
+    <!--여권 정보 출력할 레이아웃-->
+    <LinearLayout
+        android:id="@+id/menu04_2_infolayout01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/menu01_3_text01"
-        android:layout_above="@+id/menu01_3_bottom_layout"
+        android:layout_below="@+id/menu04_2_text01"
+        android:layout_above="@+id/menu04_2_backbtn"
+        android:orientation="vertical"
         android:background="@color/color_02"
         android:padding="8dp"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp">
 
-    <!--취소, 저장 버튼-->
+
+
+    </LinearLayout>
+
+
+    <!--취소, 삭제 버튼-->
     <Button
-        android:id="@+id/menu01_3_backbtn"
+        android:id="@+id/menu04_2_backbtn"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:text="취소"
@@ -49,10 +56,10 @@
         android:textColor="@color/color_03"
         android:textSize="20dp"/>
     <Button
-        android:id="@+id/menu01_3_savebtn"
+        android:id="@+id/menu04_2_removebtn"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:text="저장"
+        android:text="삭제"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
@@ -61,36 +68,5 @@
         android:textColor="@color/color_03"
         android:textSize="20dp"/>
 
-    <!--진행률-->
-    <LinearLayout
-        android:id="@+id/menu01_3_bottom_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/no_dot"
-            android:background="@android:color/transparent"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/no_dot"
-            android:background="@android:color/transparent"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/yes_dot"
-            android:background="@android:color/transparent"/>
-
-    </LinearLayout>
 
 </RelativeLayout>
