@@ -10,59 +10,63 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:layout_margin="20dp">
+        android:layout_above="@+id/main_menu_layout"
+        android:gravity="center">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            android:src="@drawable/menu01"
-            android:background="@android:color/transparent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            android:src="@drawable/menu02"
-            android:background="@android:color/transparent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            android:src="@drawable/menu03"
-            android:background="@android:color/transparent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu04"
-            android:background="@android:color/transparent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"/>
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/logo"/>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/main_menu_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:background="@color/color_02"
+        android:layout_marginBottom="20dp"
         android:gravity="center">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/logo"/>
+        <ImageButton
+            android:id="@+id/main_menu01_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/menu05"
+            android:background="@android:color/transparent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"/>
+
+        <ImageButton
+            android:id="@+id/main_menu02_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/menu06"
+            android:background="@android:color/transparent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"/>
+
+        <ImageButton
+            android:id="@+id/main_menu03_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/menu07"
+            android:background="@android:color/transparent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"/>
+
+        <ImageButton
+            android:id="@+id/main_menu04_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/menu08"
+            android:background="@android:color/transparent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"/>
 
     </LinearLayout>
 
