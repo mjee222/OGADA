@@ -20,7 +20,13 @@ public class menu01Activity_1 extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.menu01_listview01);
         listView.setAdapter(adapter);
 
-        adapter.addItem("대한민국",R.drawable.koreaflag);
+        adapter.addItem("대한민국",R.drawable.flag_korea);
+        adapter.addItem("일본",R.drawable.flag_japan);
+        adapter.addItem("대한민국",R.drawable.flag_korea);
+        adapter.addItem("대한민국",R.drawable.flag_korea);
+        adapter.addItem("대한민국",R.drawable.flag_korea);
+        adapter.addItem("대한민국",R.drawable.flag_korea);
+        adapter.addItem("대한민국",R.drawable.flag_korea);
 
 
 
