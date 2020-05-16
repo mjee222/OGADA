@@ -11,4 +11,10 @@ public class menu02Activity_1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu02_1);
     }
+
+    @Override
+    public void finish(){
+        super.finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
 }
