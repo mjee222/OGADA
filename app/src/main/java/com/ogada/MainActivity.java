@@ -16,15 +16,10 @@ public class MainActivity extends AppCompatActivity {
     /// 메뉴
     ImageButton menu01, menu02, menu03, menu04;
 
-    /// DB
-    private static final String CountryInfoName="Country_Info";
-    private static final String LandingCardName="Landing_Card";
-    private static final String PassportInfoName="Passport_Info";
-    private static final String UserInfoName="User_Info";
-
+    // DB
     DBHelper dbHelper;
     SQLiteDatabase db = null;
-    Cursor cursor;
+    public static final int dbVersion=7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
         // 스플래시 화면 관련 코드 (3초)
         Intent splash_intent = new Intent(this, SplashActivity.class);
         startActivity(splash_intent);
+
+        //////////////////////////// DB 관리
+        dbHelper = new DBHelper(this, dbVersion);
+        db = dbHelper.getWritableDatabase();
 
         //메뉴 이동
          menu01 = (ImageButton)findViewById(R.id.main_menu01_btn);
@@ -77,17 +76,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
 
-
-
-        //////////////////////////// DB 관리
-        dbHelper = new DBHelper(this, 2);
-        db = dbHelper.getWritableDatabase();
-        String[] test = {"gdfsd","sfsdr","asdf@ASDF.com","asdf"};
-        dbHelper.Delete2Table(db, UserInfoName, "gdfsd");
+    @Override
+    public void finish(){
+        super.finish();
         db.close();
-
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
 }

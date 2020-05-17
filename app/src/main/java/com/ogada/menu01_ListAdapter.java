@@ -9,10 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class menu01_ListAdapter extends BaseAdapter {
     private ImageView iconImageView;
-    private TextView titleTextView;
+    private TextView titleTextView, engTextView;
+
 
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
     private ArrayList<menu01ListItem> listViewItemList = new ArrayList<menu01ListItem>();
@@ -41,14 +43,17 @@ public class menu01_ListAdapter extends BaseAdapter {
         }
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
-        titleTextView = (TextView) convertView.findViewById(R.id.menu01_item_name);
+        titleTextView = (TextView) convertView.findViewById(R.id.menu01_item_namekor);
+        engTextView = (TextView) convertView.findViewById(R.id.menu01_item_nameeng);
         iconImageView = (ImageView) convertView.findViewById(R.id.menu01_item_flag);
 
         menu01ListItem listViewItem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
         titleTextView.setText(listViewItem.getCountryTitle());
+        engTextView.setText(listViewItem.getCountryTitleEng());
         iconImageView.setImageResource(listViewItem.getIcon());
+
 
         return convertView;
     }
@@ -66,12 +71,17 @@ public class menu01_ListAdapter extends BaseAdapter {
     }
 
     // 아이템 데이터 추가를 위한 함수.
-    public void addItem(String title, int icon) {
+    public void addItem(String title, String eng, int icon) {
         menu01ListItem item = new menu01ListItem();
 
         item.setCountryTitle(title);
+        item.setCountryTitleEng(eng);
         item.setIcon(icon);
 
         listViewItemList.add(item);
     }
+
+
+
+
 }
