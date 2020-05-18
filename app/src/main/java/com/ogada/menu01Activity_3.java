@@ -17,4 +17,11 @@ public class menu01Activity_3 extends AppCompatActivity {
         super.finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
+
+
+
+
+    // 이전, 다음 버튼
+
+
 }

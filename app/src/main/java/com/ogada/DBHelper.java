@@ -33,10 +33,10 @@ public class DBHelper extends SQLiteOpenHelper{
     // Passport_Info
     private static final String PassportInfoName="Passport_Info";
     private static final String PassportInfoColumn="CREATE TABLE " + PassportInfoName +"("
-            + "PassportNumber VARCHAR(10) PRIMARY KEY, " + "LastName VARCHAR(30), " + "FirstName VARCHAR(30), "
-            + "Nationality VARCHAR(70), " + "Birth VARCHAR(20), " + "Gender VARCHAR(3), "
-            + "IssuerCountry VARCHAR(10), " + "PassportStart VARCHAR(20), " + "PassportEnd VARCHAR(20), "
-            + "PassportType VARCHAR(5)" + ");";
+            + "PassportNumber VARCHAR(10) PRIMARY KEY, " + "NickName VARCHAR(30), " + "LastName VARCHAR(30), "
+            + "FirstName VARCHAR(30), " + "Nationality VARCHAR(70), " + "Birth VARCHAR(20), "
+            + "Gender VARCHAR(3), " + "IssuerCountry VARCHAR(10), " + "PassportStart VARCHAR(20), "
+            + "PassportEnd VARCHAR(20), " + "PassportType VARCHAR(5)" + ");";
 
     // User_Info
     private static final String UserInfoName="User_Info";

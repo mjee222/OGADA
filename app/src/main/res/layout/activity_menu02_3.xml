@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_04"
+    tools:context=".menu02Activity_3">
+
+    <TextView
+        android:id="@+id/menu02_3_text01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="8dp"
+        android:background="@color/color_01"
+        android:text="여권 등록"
+        android:textSize="30dp"
+        android:textColor="@color/color_03"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:id="@+id/menu02_3_linear01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu02_3_text01"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+
+
+
+
+
+
+        <!-- ################# 여권 번호 ################### -->
+        <TextView
+            android:id="@+id/menu02_3_text03"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="11dp"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_3_edittext02"
+            android:text="여권 번호"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/menu02_3_edittext03"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/menu02_3_text03" android:layout_alignParentTop="true"
+            android:hint="여권 번호를 입력하세요"    android:textColor="@color/color_01" android:textSize="20dp"/>
+
+
+
+        <!-- ################# 성 ################### -->
+        <TextView
+            android:id="@+id/menu02_3_text04"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="11dp"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_3_edittext04"
+            android:text="성"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/menu02_3_edittext04"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_below="@+id/menu02_3_edittext03"  android:layout_alignLeft="@+id/menu02_3_edittext03"    android:layout_toRightOf="@+id/menu02_3_text04"
+            android:hint="성씨를 입력하세요"     android:textColor="@color/color_01"    android:textSize="20dp"/>
+
+
+
+        <!-- ################# 이름 ################### -->
+        <TextView
+            android:id="@+id/menu02_3_text05"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="11dp"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_3_edittext05"
+            android:text="이름"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/menu02_3_edittext05"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_below="@+id/menu02_3_edittext04"  android:layout_alignLeft="@+id/menu02_3_edittext03"    android:layout_toRightOf="@+id/menu02_3_text05"
+            android:hint="이름을 입력하세요"     android:textColor="@color/color_01"    android:textSize="20dp"/>
+
+
+
+        <!-- ################# 국적 ################### -->
+        <TextView
+            android:id="@+id/menu02_3_text06"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="11dp"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_3_edittext06"
+            android:text="국적"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/menu02_3_edittext06"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_below="@+id/menu02_3_edittext05"  android:layout_alignLeft="@+id/menu02_3_edittext03"    android:layout_toRightOf="@+id/menu02_3_text06"
+            android:hint="국적을 입력하세요"     android:textColor="@color/color_01"    android:textSize="20dp"/>
+
+
+
+        <!-- ################# 생년월일 ################### -->
+        <TextView
+            android:id="@+id/menu02_3_text07"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_3_edittext07"
+            android:text="생년월일"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/menu02_3_edittext07"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+            android:layout_below="@+id/menu02_3_edittext06"  android:layout_alignLeft="@+id/menu02_3_edittext03"    android:layout_toRightOf="@+id/menu02_3_text07"
+            android:text="2020년 5월 18일"    android:textColor="@color/color_01"    android:textSize="20dp"/>
+        <ImageButton
+            android:id="@+id/menu02_3_birthbtn"
+            android:layout_width="30dp" android:layout_height="30dp" android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent" android:adjustViewBounds="true" android:scaleType="centerInside"
+            android:layout_toRightOf="@+id/menu02_3_edittext07" android:layout_alignTop="@+id/menu02_3_edittext07"
+            android:src="@drawable/calender_icon"/>
+
+
+
+        <!-- ################# 성별 ################### -->
+        <TextView
+            android:id="@+id/menu02_3_text08"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="5dp"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_3_radio08"
+            android:text="성별"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/menu02_3_radio08"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
+            android:layout_below="@+id/menu02_3_edittext07"  android:layout_alignLeft="@+id/menu02_3_edittext03"    android:layout_toRightOf="@+id/menu02_3_text08">
+            <RadioButton
+                android:id="@+id/menu02_3_radioM"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="남성"   android:textSize="15dp" android:textColor="@color/color_01"/>
+            <RadioButton
+                android:id="@+id/menu02_3_radioF"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="여성"   android:textSize="15dp" android:textColor="@color/color_01"/>
+        </RadioGroup>
+
+
+
+
+
+        <!-- ################# 발행국 ################### -->
+        <TextView
+            android:id="@+id/menu02_3_text09"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="11dp"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_3_edittext09"
+            android:text="발행국"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/menu02_3_edittext09"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_below="@+id/menu02_3_radio08"  android:layout_alignLeft="@+id/menu02_3_edittext03"    android:layout_toRightOf="@+id/menu02_3_text09"
+            android:hint="발행국을 입력하세요"     android:textColor="@color/color_01"    android:textSize="20dp"/>
+
+
+
+        <!-- ################# 여권 발급일 ################### -->
+        <TextView
+            android:id="@+id/menu02_3_text10"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_3_edittext10"
+            android:text="여권 발급일"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/menu02_3_edittext10"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+            android:layout_below="@+id/menu02_3_edittext09"  android:layout_alignLeft="@+id/menu02_3_edittext03"    android:layout_toRightOf="@+id/menu02_3_text10"
+            android:text="2020년 5월 18일"     android:textColor="@color/color_01"    android:textSize="20dp"/>
+
+        <ImageButton
+            android:id="@+id/menu02_3_startdatehbtn"
+            android:layout_width="30dp" android:layout_height="30dp" android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent" android:adjustViewBounds="true" android:scaleType="centerInside"
+            android:layout_toRightOf="@+id/menu02_3_edittext10" android:layout_alignTop="@+id/menu02_3_text10"
+            android:src="@drawable/calender_icon"/>
+
+
+
+        <!-- ################# 여권 만료일 ################### -->
+        <TextView
+            android:id="@+id/menu02_3_text11"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_3_edittext11"
+            android:text="여권 만료일"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/menu02_3_edittext11"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+            android:layout_below="@+id/menu02_3_edittext10"  android:layout_alignLeft="@+id/menu02_3_edittext03"    android:layout_toRightOf="@+id/menu02_3_text11"
+            android:text="2020년 5월 18일"      android:textColor="@color/color_01"    android:textSize="20dp"/>
+        <ImageButton
+            android:id="@+id/menu02_3_enddatehbtn"
+            android:layout_width="30dp" android:layout_height="30dp" android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent" android:adjustViewBounds="true" android:scaleType="centerInside"
+            android:layout_toRightOf="@+id/menu02_3_edittext11" android:layout_alignTop="@+id/menu02_3_edittext11"
+            android:src="@drawable/calender_icon"/>
+
+
+
+        <!-- ################# 여권 종류 ################### -->
+        <TextView
+            android:id="@+id/menu02_3_text12"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="5dp"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_3_radio12"
+            android:text="여권 종류"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/menu02_3_radio12"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="11dp"
+            android:layout_below="@+id/menu02_3_edittext11"  android:layout_alignLeft="@+id/menu02_3_edittext03"    android:layout_toRightOf="@+id/menu02_3_text12">
+            <RadioButton
+                android:id="@+id/menu02_3_radioPM"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="PM"   android:textSize="15dp" android:textColor="@color/color_01"/>
+            <RadioButton
+                android:id="@+id/menu02_3_radioPS"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="PS"   android:textSize="15dp" android:textColor="@color/color_01"/>
+            <RadioButton
+                android:id="@+id/menu02_3_radioPR"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="PR"   android:textSize="15dp" android:textColor="@color/color_01"/>
+            <RadioButton
+                android:id="@+id/menu02_3_radioPO"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="PO"   android:textSize="15dp" android:textColor="@color/color_01"/>
+
+        </RadioGroup>
+
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/menu02_3_backbtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="취소"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/color_01"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
+    <Button
+        android:id="@+id/menu02_3_gobtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="다음"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/color_01"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
+
+</RelativeLayout>
