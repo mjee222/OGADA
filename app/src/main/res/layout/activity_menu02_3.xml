@@ -40,10 +40,10 @@
 
         <!-- ################# 여권 번호 ################### -->
         <TextView
-            android:id="@+id/menu02_3_text03"
+            android:id="@+id/menu02_3_text03"   android:singleLine="true"
             android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="11dp"
-            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_3_edittext02"
-            android:text="여권 번호"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_3_edittext03"
+            android:text="여권 번호"  android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
 
         <EditText
             android:id="@+id/menu02_3_edittext03"
