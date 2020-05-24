@@ -41,7 +41,7 @@ public class DBHelper extends SQLiteOpenHelper{
     // User_Info
     private static final String UserInfoName="User_Info";
     private static final String UserInfoColumn="CREATE TABLE " + UserInfoName + "("
-            + "PassportNumber VARCHAR(10) PRIMARY KEY, " + "PhoneNumber VARCHAR(15), "
+            + "PassportNumber VARCHAR(10) PRIMARY KEY, " + "Nickname VARCHAR(30), " + "PhoneNumber VARCHAR(15), "
             + "Email VARCHAR(30), " + "Address VARCHAR(100)" + ");";
 
 
