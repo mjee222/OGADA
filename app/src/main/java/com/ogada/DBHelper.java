@@ -100,7 +100,7 @@ public class DBHelper extends SQLiteOpenHelper{
         return true;
     }
 
-    public boolean Delete2Table(SQLiteDatabase db, String TableName, String KeyValue){
+    static public boolean Delete2Value(SQLiteDatabase db, String TableName, String KeyValue){
 
         String Country_key = "CountryID";
         String User_key = "PassportNumber";
