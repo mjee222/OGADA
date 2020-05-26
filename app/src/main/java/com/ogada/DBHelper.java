@@ -82,6 +82,9 @@ public class DBHelper extends SQLiteOpenHelper{
         for(int i=0; i<CountryArr.length; i++){
             Insert2Table(db, CountryInfoName, CountryArr[i]);
         }
+
+        Delete2Value(db, PassportInfoName, "a1234567");
+        Delete2Value(db, UserInfoName, "a1234567");
     }
 
     static public boolean Insert2Table(SQLiteDatabase db, String TableName, String[] InfoArray){
