@@ -49,7 +49,7 @@ public class menu03_ListAdapter extends BaseAdapter {
 
         // 아이템 내 각 위젯에 데이터 반영
         CountryNameTextView.setText(listViewItem.getCountryNameStr());
-        CountryNameTextView.setText(listViewItem.getPassportNameStr());
+        PassportNameTextView.setText(listViewItem.getPassportNameStr());
 
         return convertView;
     }
