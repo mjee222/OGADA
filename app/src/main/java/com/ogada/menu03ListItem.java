@@ -16,7 +16,7 @@ public class menu03ListItem extends AppCompatActivity {
         PassportNameStr=titleeng;
     }
 
-    public String getCountryNameStr() { return this.CountryNameStr ;}
+    public String getCountryNameStr() { return this.CountryNameStr;}
     public String getPassportNameStr(){return this.PassportNameStr;}
 
 }
