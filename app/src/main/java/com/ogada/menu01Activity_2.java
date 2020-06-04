@@ -17,6 +17,7 @@ public class menu01Activity_2 extends AppCompatActivity {
     DBHelper dbHelper;
     SQLiteDatabase db = null;
     private static String CountryID="";
+    String PassportNumber="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class menu01Activity_2 extends AppCompatActivity {
                 Intent intent=new Intent(getApplicationContext(), menu01Activity_3.class);
                 intent.putExtra("resID", resID);
                 intent.putExtra("CountryID", CountryID);
+                intent.putExtra("PassportNumber", PassportNumber);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }

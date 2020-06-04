@@ -19,16 +19,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.ogada.DBHelper.LandingCardColNames;
 
 public class menu01Activity_3 extends AppCompatActivity {
     private static final String LandingCardName="Landing_Card";
+    private static final String PassportInfoName="Passport_Info";
     ImageView imageView;
 
     DBHelper dbHelper;
     SQLiteDatabase db = null;
+
+    ArrayList<String> notinPassportInfo_kor = new ArrayList<>(Arrays.asList(new String[]{"직업", "고향", "비자 번호", "비자 발급일", "비자 만료일", "비자 발급처", "항공기 번호", "출발 도시", "머무는 날", "머무는 곳의 주소", "서명"}));
+    ArrayList<String> notinPassportInfo_eng = new ArrayList<>(Arrays.asList(new String[]{"Job", "Hometwon", "VisaNumber", "VisaStart", "VisaEnd", "VisaIssuer", "AirplaneNumber", "BoardingCity", "StayDay", "StayAddress", "Sign"}));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,7 @@ public class menu01Activity_3 extends AppCompatActivity {
         Intent intent=getIntent();
         final int resID=intent.getExtras().getInt("resID");
         final String CountryID=intent.getExtras().getString("CountryID");
+        final String PassportNumber=intent.getExtras().getString("PassportNumber");
 
         Button preBtn = (Button) findViewById(R.id.menu01_3_backbtn);
         preBtn.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +67,13 @@ public class menu01Activity_3 extends AppCompatActivity {
         for(int i=0; i<data_arr.size(); i++){
             int xy[] =getXY(data_arr.get(i)[1], deviceDpi);
             String dataName=data_arr.get(i)[0];
-            bm = writeOnDrawable(bm, "t", 80, xy[0], xy[1]);
+            int PassportIdx=notinPassportInfo_eng.indexOf(dataName);
+            if(-1<PassportIdx){
+                bm = writeOnDrawable(bm, notinPassportInfo_kor.get(PassportIdx), 80, xy[0], xy[1]);
+                continue;
+            }
+            String data_info=getUserInfo(db, dataName, PassportNumber);
+            bm = writeOnDrawable(bm, data_info, 80, xy[0], xy[1]);
         }
         //int temp[]=getXY(db, CountryID, "LastName");
         //int data[]=px2dp(temp[0], temp[1], deviceDpi);
@@ -73,13 +85,25 @@ public class menu01Activity_3 extends AppCompatActivity {
     }
 
 
-
     @Override
     public void finish(){
         super.finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
+    public String getUserInfo(SQLiteDatabase db, String colname, String PassportNumber){
+        String info="";
+        Cursor cursor = null;
+        String query = "SELECT " + colname + " FROM " + PassportInfoName + " WHERE PassportNumber='" + PassportNumber + "';";
+        cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            info = cursor.getString(0);
+        }
+        return info;
+    }
+
+    // 신고서에 필요한 칼럼명 가져와서 리스트로 반환
+    // {"칼럼명", "x좌표,y좌표"}
     public List<String[]> getItemList(SQLiteDatabase db, String CountryID) {
         String ItemName = null, value = null;
         Cursor cursor = null;
@@ -98,6 +122,7 @@ public class menu01Activity_3 extends AppCompatActivity {
         return data_arr;
     }
 
+    // 필요한 정보 좌표 이름 반환(디비 사용)
     public String getNameXY(SQLiteDatabase db, String CountryID, String ItemName){
         Cursor cursor = null;
         String query = "SELECT " + ItemName + " FROM " + LandingCardName + " WHERE CountryID='" + CountryID + "';";
@@ -113,6 +138,7 @@ public class menu01Activity_3 extends AppCompatActivity {
     }
 
 
+    // 좌표랑 화면 속 좌표랑 맞춰줌
     public int[] getXY(String xy, int dpi){
         String split_xy[] = xy.split(",");
         int temp_xy[]={Integer.parseInt(split_xy[0]), Integer.parseInt(split_xy[1])};
@@ -120,9 +146,8 @@ public class menu01Activity_3 extends AppCompatActivity {
         return return_value;
     }
 
+    //그림 그려줌
     public Bitmap writeOnDrawable(Bitmap bm, String text, int TextSize, int x, int y){
-
-
         //BitmapFactory.decodeResource(getResources(),R.drawable.pin_l3x);
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
