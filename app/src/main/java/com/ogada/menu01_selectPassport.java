@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class menu01_selectPassport extends AppCompatActivity {
@@ -45,6 +46,14 @@ public class menu01_selectPassport extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 menu01ListItem item = (menu01ListItem)adapter.getItem(i);
                 ShowPassportList(item.getCountryTitleEng(), item.getCountryTitle());
+            }
+        });
+
+        Button preBtn = (Button)findViewById(R.id.menu01_select_backbtn);
+        preBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
     }

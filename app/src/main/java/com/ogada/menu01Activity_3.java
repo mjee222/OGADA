@@ -1,9 +1,13 @@
 package com.ogada;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -11,13 +15,20 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -81,6 +92,43 @@ public class menu01Activity_3 extends AppCompatActivity {
         //imageView.setImageBitmap(writeOnDrawable(resID, "t", 80, data[0], data[1]));
 
         imageView.setImageBitmap(bm);
+
+        Button saveBtn = (Button)findViewById(R.id.menu01_3_savebtn);
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bitmap captureView = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                File root = Environment.getExternalStorageDirectory();
+                FileOutputStream fos;
+                boolean isGrantStorage = grantExternalStoragePermission();  //퍼미션 허가 여부 확인
+                System.out.println(isGrantStorage);
+                if (isGrantStorage) {
+                    try {
+                        fos = new FileOutputStream(getExternalFilesDir(null).getAbsolutePath() + "/OGADA_"+PassportNumber+"_"+CountryID+".jpeg");
+                        captureView.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(getApplicationContext(), "Captured!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+
+    private boolean grantExternalStoragePermission() {
+        if (Build.VERSION.SDK_INT >= 23) {
+
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                return true;
+            }else{
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        }else{
+            Toast.makeText(this, "External Storage Permission is Grant", Toast.LENGTH_SHORT).show();
+            return true;
+        }
 
     }
 

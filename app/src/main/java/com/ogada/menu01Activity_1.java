@@ -10,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -54,6 +55,14 @@ public class menu01Activity_1 extends AppCompatActivity {
                 menu01ListItem item = (menu01ListItem)adapter.getItem(i);
                 ShowBlankLandingCard(item.getCountryTitle(), item.getCountryTitleEng());
                 // Toast.makeText(view.getContext(), item.getCountryTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button preBtn = (Button)findViewById(R.id.menu01_1_backbtn);
+        preBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
 
