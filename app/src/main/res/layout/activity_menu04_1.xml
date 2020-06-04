@@ -27,12 +27,56 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/menu04_text01"
+        android:layout_above="@+id/menu04_1_backbtn"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="20dp"
         android:padding="8dp"
         android:background="@color/color_03"/>
+
+    <Button
+        android:id="@+id/menu04_1_backbtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="취소"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/color_01"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
+
+
+    <!--진행률-->
+    <LinearLayout
+        android:id="@+id/menu03_1_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/yes_dot"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_dot"
+            android:background="@android:color/transparent"/>
+
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>

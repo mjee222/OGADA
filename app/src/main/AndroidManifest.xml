@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ogada">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".menu01_selectPassport"></activity>
+        <activity android:name=".menu03ListItem"></activity>
+        <activity android:name=".menu01_selectPassport" />
         <activity android:name=".menu02Activity_4" />
         <activity android:name=".menu02Activity_3" />
         <activity android:name=".menu01ListItem" />

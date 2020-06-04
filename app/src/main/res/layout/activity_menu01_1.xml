@@ -36,6 +36,18 @@
         android:textSize="30dp"
         android:textColor="@color/color_black"/>
 
+
+    <ListView
+        android:id="@+id/menu01_listview01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu01_edittext01"
+        android:layout_above="@+id/menu01_bottom_layout"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:background="@color/color_03"/>
+
+
     <Button
         android:id="@+id/menu01_1_backbtn"
         android:layout_width="100dp"
@@ -48,17 +60,6 @@
         android:background="@color/color_01"
         android:textColor="@color/color_03"
         android:textSize="20dp"/>
-
-    <ListView
-        android:id="@+id/menu01_listview01"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/menu01_edittext01"
-        android:layout_above="@+id/menu01_bottom_layout"
-        android:layout_margin="10dp"
-        android:padding="5dp"
-        android:background="@color/color_03"/>
-
     <!--진행률-->
     <LinearLayout
         android:id="@+id/menu01_bottom_layout"

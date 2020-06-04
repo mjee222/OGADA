@@ -27,6 +27,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -98,13 +99,17 @@ public class menu01Activity_3 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Bitmap captureView = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-                File root = Environment.getExternalStorageDirectory();
+                File sdCard = Environment.getExternalStorageDirectory();
+                File dir = new File(sdCard.getAbsolutePath()+"/OGADA");
+                String fileName="OGADA_"+PassportNumber+"_"+CountryID+".jpeg";
                 FileOutputStream fos;
                 boolean isGrantStorage = grantExternalStoragePermission();  //퍼미션 허가 여부 확인
-                System.out.println(isGrantStorage);
                 if (isGrantStorage) {
                     try {
-                        fos = new FileOutputStream(getExternalFilesDir(null).getAbsolutePath() + "/OGADA_"+PassportNumber+"_"+CountryID+".jpeg");
+                        if(!dir.exists()){
+                            dir.mkdirs();
+                        }
+                        fos = new FileOutputStream(new File(dir, fileName));
                         captureView.compress(Bitmap.CompressFormat.JPEG, 100, fos);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
