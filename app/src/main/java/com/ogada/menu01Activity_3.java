@@ -32,8 +32,8 @@ public class menu01Activity_3 extends AppCompatActivity {
     DBHelper dbHelper;
     SQLiteDatabase db = null;
 
-    ArrayList<String> notinPassportInfo_kor = new ArrayList<>(Arrays.asList(new String[]{"직업", "고향", "비자 번호", "비자 발급일", "비자 만료일", "비자 발급처", "항공기 번호", "출발 도시", "머무는 날", "머무는 곳의 주소", "서명"}));
-    ArrayList<String> notinPassportInfo_eng = new ArrayList<>(Arrays.asList(new String[]{"Job", "Hometwon", "VisaNumber", "VisaStart", "VisaEnd", "VisaIssuer", "AirplaneNumber", "BoardingCity", "StayDay", "StayAddress", "Sign"}));
+    ArrayList<String> notinPassportInfo_kor = new ArrayList<>(Arrays.asList(new String[]{"직업", "고향", "비자 번호", "비자 발급일", "비자 만료일", "비자 발급처", "항공기 번호", "출발 도시", "머무는 날", "머무는 곳의 주소", "서명", "주소"}));
+    ArrayList<String> notinPassportInfo_eng = new ArrayList<>(Arrays.asList(new String[]{"Job", "Hometown", "VisaNumber", "VisaStart", "VisaEnd", "VisaIssuer", "AirplaneNumber", "BoardingCity", "StayDay", "StayAddress", "Sign", "Address"}));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +69,11 @@ public class menu01Activity_3 extends AppCompatActivity {
             String dataName=data_arr.get(i)[0];
             int PassportIdx=notinPassportInfo_eng.indexOf(dataName);
             if(-1<PassportIdx){
-                bm = writeOnDrawable(bm, notinPassportInfo_kor.get(PassportIdx), 80, xy[0], xy[1]);
+                bm = writeOnDrawable(bm, notinPassportInfo_kor.get(PassportIdx), 50, xy[0], xy[1]);
                 continue;
             }
             String data_info=getUserInfo(db, dataName, PassportNumber);
-            bm = writeOnDrawable(bm, data_info, 80, xy[0], xy[1]);
+            bm = writeOnDrawable(bm, data_info, 50, xy[0], xy[1]);
         }
         //int temp[]=getXY(db, CountryID, "LastName");
         //int data[]=px2dp(temp[0], temp[1], deviceDpi);

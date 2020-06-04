@@ -21,6 +21,8 @@ public class menu01Activity_1 extends AppCompatActivity {
     private ListView listView;
     private  menu01_ListAdapter adapter;
 
+    private String PassportNumber="";
+
     // db
     DBHelper dbHelper;
     SQLiteDatabase db = null;
@@ -29,6 +31,9 @@ public class menu01Activity_1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu01_1);
+
+        Intent intent=getIntent();
+        PassportNumber=intent.getExtras().getString("PassportNumber");
 
         adapter = new menu01_ListAdapter();
 
@@ -72,6 +77,7 @@ public class menu01Activity_1 extends AppCompatActivity {
 
     public void ShowBlankLandingCard(String CountryNameKor, String CountryNameEng){
         Intent intent=new Intent(getApplicationContext(), menu01Activity_2.class);
+        intent.putExtra("PassportNumber", PassportNumber);
         intent.putExtra("CountryNameKor", CountryNameKor);
         intent.putExtra("CountryNameEng", CountryNameEng);
         startActivity(intent);

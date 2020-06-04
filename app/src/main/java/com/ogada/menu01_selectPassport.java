@@ -29,7 +29,7 @@ public class menu01_selectPassport extends AppCompatActivity {
 
         adapter = new menu01_ListAdapter();
 
-        listView = (ListView)findViewById(R.id.menu04_listview01);
+        listView = (ListView)findViewById(R.id.menu01_select_list01);
         listView.setAdapter(adapter);
 
 
@@ -57,12 +57,13 @@ public class menu01_selectPassport extends AppCompatActivity {
 
         while(cursor.moveToNext()){
             adapter.addItem(cursor.getString(1), cursor.getString(0), R.drawable.flag_korea);
+            System.out.println(cursor.getString(1));
         }
 
     }
 
     public void ShowPassportList(String PassportNumber, String Nickname){
-        Intent intent=new Intent(getApplicationContext(), menu04Activity_2.class);
+        Intent intent=new Intent(getApplicationContext(), menu01Activity_1.class);
         intent.putExtra("PassportNumber", PassportNumber);
         intent.putExtra("NickName", Nickname);
         startActivity(intent);
