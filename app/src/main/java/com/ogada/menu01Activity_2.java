@@ -34,7 +34,19 @@ public class menu01Activity_2 extends AppCompatActivity {
         db = dbHelper.getReadableDatabase();
 
         ImageView CardImgView=(ImageView)findViewById(R.id.menu01_2_imageview);
-        showBlankLandingCard(db, CountryNameEng, CardImgView);
+        final int resID = showBlankLandingCard(db, CountryNameEng, CardImgView);
+
+        Button goBtn = (Button)findViewById(R.id.menu01_2_gobtn);
+        goBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(), menu01Activity_3.class);
+                intent.putExtra("resID", resID);
+                intent.putExtra("CountryID", CountryID);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
 
         Button preBtn = (Button)findViewById(R.id.menu01_2_backbtn);
         preBtn.setOnClickListener(new View.OnClickListener() {
@@ -46,18 +58,21 @@ public class menu01Activity_2 extends AppCompatActivity {
     }
 
 
-    public void showBlankLandingCard(SQLiteDatabase db, String CountrynameEng, ImageView imgV){
+    public int showBlankLandingCard(SQLiteDatabase db, String CountrynameEng, ImageView imgV){
         Cursor cursor=null;
         String query="SELECT LandingCardImg, CardType, CountryID FROM "+ CountryInfoName+" WHERE CountryNameEng='"+ CountrynameEng+"';";
         cursor = db.rawQuery(query, null);
+        int resID=-1;
 
         while(cursor.moveToNext()){
             String resName = cursor.getString(0);
             String packName = this.getPackageName();
-            int resID = getResources().getIdentifier(resName, "drawable", packName);
+            resID = getResources().getIdentifier(resName, "drawable", packName);
             imgV.setImageResource(resID);
             CountryID=cursor.getString(2);
         }
+
+        return resID;
     }
 
     @Override

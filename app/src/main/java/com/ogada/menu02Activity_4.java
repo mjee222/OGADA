@@ -70,13 +70,6 @@ public class menu02Activity_4 extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
     }
 
 

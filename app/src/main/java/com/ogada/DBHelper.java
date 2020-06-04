@@ -29,6 +29,10 @@ public class DBHelper extends SQLiteOpenHelper{
             + "VisaStart VARCHAR(20), " + "VisaEnd VARCHAR(20), " + "VisaIssuer VARCHAR(20), "
             + "AirplaneNumber VARCHAR(20), " + "BoardingCity VARCHAR(20), " + "StayDay VARCHAR(20), "
             + "StayAddress VARCHAR(20), " + "Sign VARCHAR(20), " + "TodayDate VARCHAR(20), " + "Others VARCHAR(20)"+");";
+    public static final String[] LandingCardColNames={"CountryID", "LastName", "FirstName", "Nationality", "Birth", "Gender", "Job",
+                                                         "Address", "Hometown", "PhoneNumber", "Email", "PassportNumber", "PassportStart", "PassportEnd",
+                                                        "VisaNumber", "VisaStart", "VisaEnd", "VisaIssuer", "AirplaneNumber", "BoardingCity", "StayDay",
+                                                        "StayAddress", "Sign", "TodayDate", "Others"};
 
     // Passport_Info
     private static final String PassportInfoName="Passport_Info";
@@ -59,6 +63,8 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL(PassportInfoColumn);
         db.execSQL(UserInfoColumn);
 
+        initDatabase(db);
+
 
     }
 
@@ -70,21 +76,8 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS "+UserInfoName);
         onCreate(db);
 
-        // 초기 데이터
-        String [][]CountryArr={
-                {"001", "대한민국", "Korea", "@drawable/flag_korea", "@drawable/card_blank_korea", "wid"},
-                {"002", "일본", "Japan", "@drawable/flag_japan", "@drawable/card_blank_japan", "wid"},
-                {"003", "중국", "china", "@drawable/flag_china", "@drawable/card_blank_china", "wid"},
-                {"004", "홍콩", "hongkong", "@drawable/flag_hongkong", "@drawable/card_blank_hongkong", "hei"},
-                {"005", "대만", "taiwan", "@drawable/flag_taiwan", "@drawable/card_blank_taiwan", "hei"}
-        };
+        initDatabase(db);
 
-        for(int i=0; i<CountryArr.length; i++){
-            Insert2Table(db, CountryInfoName, CountryArr[i]);
-        }
-
-        Delete2Value(db, PassportInfoName, "a1234567");
-        Delete2Value(db, UserInfoName, "a1234567");
     }
 
     static public boolean Insert2Table(SQLiteDatabase db, String TableName, String[] InfoArray){
@@ -145,6 +138,32 @@ public class DBHelper extends SQLiteOpenHelper{
 
     private String getURLForResource(int resId) {
         return Uri.parse("android.resource://" + R.class.getPackage().getName() + "/" + resId).toString();
+    }
+
+    public void initDatabase(SQLiteDatabase db){
+        // 초기 데이터
+        String [][]CountryArr={
+                {"001", "대한민국", "Korea", "@drawable/flag_korea", "@drawable/card_blank_korea", "wid"},
+                {"002", "일본", "Japan", "@drawable/flag_japan", "@drawable/card_blank_japan", "wid"},
+                {"003", "중국", "china", "@drawable/flag_china", "@drawable/card_blank_china", "wid"},
+                {"004", "홍콩", "hongkong", "@drawable/flag_hongkong", "@drawable/card_blank_hongkong", "hei"},
+                {"005", "대만", "taiwan", "@drawable/flag_taiwan", "@drawable/card_blank_taiwan", "hei"}
+        };
+
+        for(int i=0; i<CountryArr.length; i++){
+            Insert2Table(db, CountryInfoName, CountryArr[i]);
+        }
+
+
+        String []Hongkong_xy={"004","46,128,328,145","46,88,293,106",
+                "47,207,175,227","192,205,320,227","319,89,337,110",
+                " ","48,285,323,304","192,205,320,227",
+                " "," ","43,168,173,185",
+                " ", " ", " ",
+                " "," "," ",
+                "46,326,164,343", "210,325,326,344", "209,168,330,186",
+                "210,246,325,264", "157,359,325,381", " ", " "};
+        Insert2Table(db, LandingCardName, Hongkong_xy);
     }
 
 

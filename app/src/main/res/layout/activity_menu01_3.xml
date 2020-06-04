@@ -27,10 +27,11 @@
     <!--입국서 이미지 출력할 이미지뷰-->
     <ImageView
         android:id="@+id/menu01_3_imageview"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/menu01_3_text01"
         android:layout_above="@+id/menu01_3_bottom_layout"
+        android:layout_centerInParent="true"
         android:background="@color/color_02"
         android:padding="8dp"
         android:layout_margin="10dp"/>
