@@ -8,7 +8,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".menu02Activity_4"></activity>
+        <activity android:name=".menu02Activity_3" />
+        <activity android:name=".menu01ListItem" />
+        <activity android:name=".menu02Activity_2" />
+        <activity android:name=".menu02Activity_1" />
+        <activity android:name=".menu04Activity_2" />
+        <activity android:name=".menu04Activity_1" />
+        <activity android:name=".menu03Activity_2" />
+        <activity android:name=".menu03Activity_1" />
+        <activity android:name=".menu01Activity_3" />
+        <activity android:name=".menu01Activity_2" />
+        <activity android:name=".menu01Activity_1" />
+        <activity android:name=".SplashActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

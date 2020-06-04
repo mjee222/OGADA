@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_04"
+    tools:context=".menu02Activity_4">
+
+    <TextView
+        android:id="@+id/menu02_4_text01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="8dp"
+        android:background="@color/color_01"
+        android:text="여권 등록"
+        android:textSize="30dp"
+        android:textColor="@color/color_03"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/menu02_4_text02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu02_4_text01"
+        android:gravity="center"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
+        android:background="@color/color_01"
+        android:text="추가 정보 기입"
+        android:textSize="20dp"
+        android:textColor="@color/color_03"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:id="@+id/menu02_3_linear01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu02_4_text02"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+
+
+
+
+        <!-- ################# 여권 별명 ################### -->
+        <TextView
+            android:id="@+id/menu02_4_text03"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="11dp"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_4_edittext03"
+            android:text="여권 별명"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/menu02_4_edittext03"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/menu02_4_text03" android:layout_alignParentTop="true"
+            android:hint="여권의 별명을 입력하세요"   android:textColor="@color/color_01" android:textSize="20dp"/>
+
+
+
+        <!-- ################# 전화번호 ################### -->
+        <TextView
+            android:id="@+id/menu02_4_text04"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="11dp"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_4_edittext04"
+            android:text="전화번호"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/menu02_4_edittext04"
+            android:layout_width="wrap_content"  android:layout_height="wrap_content"
+            android:layout_below="@+id/menu02_4_edittext03" android:layout_toRightOf="@+id/menu02_4_text04" android:layout_alignLeft="@+id/menu02_4_edittext03"
+            android:hint="전화번호를 입력하세요"    android:textColor="@color/color_01" android:textSize="20dp"/>
+
+
+
+        <!-- ################# 이메일 ################### -->
+        <TextView
+            android:id="@+id/menu02_4_text05"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="11dp"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_4_edittext05"
+            android:text="이메일"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/menu02_4_edittext05"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_below="@+id/menu02_4_edittext04"  android:layout_alignLeft="@+id/menu02_4_edittext03"    android:layout_toRightOf="@+id/menu02_4_text05"
+            android:hint="이메일을 입력하세요"     android:textColor="@color/color_01"    android:textSize="20dp"/>
+
+
+        <!-- ################# 주소 ################### -->
+        <TextView
+            android:id="@+id/menu02_4_text06"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="11dp"
+            android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_4_edittext06"
+            android:text="주소"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/menu02_4_edittext06"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_below="@+id/menu02_4_edittext05"  android:layout_alignLeft="@+id/menu02_4_edittext03"    android:layout_toRightOf="@+id/menu02_4_text06"
+            android:hint="주소를 입력하세요"     android:textColor="@color/color_01"    android:textSize="20dp"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/menu02_4_backbtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="취소"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/color_01"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
+    <Button
+        android:id="@+id/menu02_4_gobtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="작성"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/color_01"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
+
+
+
+    <!--진행률-->
+    <LinearLayout
+        android:id="@+id/menu02_1_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_dot"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_dot"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/yes_dot"
+            android:background="@android:color/transparent"/>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

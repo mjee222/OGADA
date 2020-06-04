@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_04"
+    tools:context=".menu04Activity_2">
+
+    <!-- 여권 별명 -->
+    <TextView
+        android:id="@+id/menu04_2_text01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="8dp"
+        android:background="@color/color_01"
+        android:text="민정이의 여권"
+        android:textSize="30dp"
+        android:textColor="@color/color_03"
+        android:textStyle="bold"/>
+
+
+
+        <!--여권 정보 출력할 레이아웃-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/menu04_2_text01"
+            android:layout_above="@+id/menu04_2_backbtn"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_margin="5dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity ="center"
+                android:fillViewport="true"
+                android:layout_marginTop="0dp"
+                android:id="@+id/scrollView">
+
+                <LinearLayout
+                    android:id="@+id/menu04_2_infolayout01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:layout_margin="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="여권 번호"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text02"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="여권 번호"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="성"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text03"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="성"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="이름"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text04"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="이름"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="국적"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text05"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="국적"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="생일"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text06"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="생일"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="성별"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text07"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="성별"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="발행국"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text08"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="발행국"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="여권 발급일"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text09"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="여권 발급일"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="여권 만료일"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text10"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="여권 만료일"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="여권 타입"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text11"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="여권 타입"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="전화번호"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text12"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="전화번호"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="이메일"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text13"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="이메일"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_03"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="주소"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/menu04_2_text14"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="주소"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+            </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+
+
+    <!--취소, 삭제 버튼-->
+    <Button
+        android:id="@+id/menu04_2_backbtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="취소"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/color_01"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
+    <Button
+        android:id="@+id/menu04_2_removebtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="삭제"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/color_01"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
+
+
+</RelativeLayout>

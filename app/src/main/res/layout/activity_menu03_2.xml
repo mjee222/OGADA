@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_04"
+    tools:context=".menu03Activity_2">
+
+    <!-- 나라 이름 -->
+    <TextView
+        android:id="@+id/menu03_2_text01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="8dp"
+        android:background="@color/color_01"
+        android:text="대한민국"
+        android:textSize="30dp"
+        android:textColor="@color/color_03"
+        android:textStyle="bold"/>
+
+    <!--입국서 이미지 출력할 이미지뷰-->
+    <ImageView
+        android:id="@+id/menu03_2_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu03_2_text01"
+        android:layout_above="@+id/menu03_2_backbtn"
+        android:background="@color/color_02"
+        android:padding="8dp"
+        android:layout_margin="10dp"/>
+
+    <!--취소, 삭제 버튼-->
+    <Button
+        android:id="@+id/menu03_2_backbtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="취소"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/color_01"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
+    <Button
+        android:id="@+id/menu03_2_removebtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="삭제"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/color_01"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
+
+
+</RelativeLayout>
