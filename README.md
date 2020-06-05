@@ -12,7 +12,7 @@
 * os : Window 10
 * develop tool : Android Studio3.5
 * tess-two : 9.0.0
-* OpenCV : 3.1.0
+* OpenCV : 4.3.0
 
 # 제작자 정보
 
@@ -23,5 +23,5 @@
 # 참고 링크  
 - Tesseract Dataset Download Link : https://github.com/tesseract-ocr/tessdata
 - Use tess-two module : https://github.com/alexcohn/tess-two
-- OpenCV Download : http://sourceforge.net/projects/opencvlibrary/files/opencv-android/3.1.0/OpenCV-3.1.0-android-sdk.zip/download
+- OpenCV Download : https://github.com/opencv/opencv/releases
 
