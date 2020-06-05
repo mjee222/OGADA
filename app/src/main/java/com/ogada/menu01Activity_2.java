@@ -24,7 +24,7 @@ public class menu01Activity_2 extends AppCompatActivity {
     DBHelper dbHelper;
     SQLiteDatabase db = null;
     private static String CountryID="";
-    String PassportNumber="";
+    private String PassportNumber="", NickName="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class menu01Activity_2 extends AppCompatActivity {
         String CountryNameKor=intent.getExtras().getString("CountryNameKor");
         String CountryNameEng=intent.getExtras().getString("CountryNameEng");
         PassportNumber=intent.getExtras().getString("PassportNumber");
+        NickName=intent.getExtras().getString("NickName");
 
         TextView CountryNameTextView=(TextView)findViewById(R.id.menu01_2_text02);
         CountryNameTextView.setText(CountryNameKor);
@@ -53,6 +54,7 @@ public class menu01Activity_2 extends AppCompatActivity {
                 intent.putExtra("resID", resID);
                 intent.putExtra("CountryID", CountryID);
                 intent.putExtra("PassportNumber", PassportNumber);
+                intent.putExtra("NickName", NickName);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }

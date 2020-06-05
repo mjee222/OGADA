@@ -43,9 +43,11 @@ public class menu01Activity_3 extends AppCompatActivity {
 
     DBHelper dbHelper;
     SQLiteDatabase db = null;
-
+    private String PassportNumber="", NickName="";
     ArrayList<String> notinPassportInfo_kor = new ArrayList<>(Arrays.asList(new String[]{"직업", "고향", "비자 번호", "비자 발급일", "비자 만료일", "비자 발급처", "항공기 번호", "출발 도시", "머무는 날", "머무는 곳의 주소", "서명", "주소"}));
     ArrayList<String> notinPassportInfo_eng = new ArrayList<>(Arrays.asList(new String[]{"Job", "Hometown", "VisaNumber", "VisaStart", "VisaEnd", "VisaIssuer", "AirplaneNumber", "BoardingCity", "StayDay", "StayAddress", "Sign", "Address"}));
+    ArrayList<String> CountryIDNumlist = new ArrayList<>(Arrays.asList(new String[]{"001", "002", "003", "004", "005"}));
+    ArrayList<String> CountryID2Name = new ArrayList<>(Arrays.asList(new String[]{"대한민국", "일본", "중국", "홍콩", "대만"}));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,9 @@ public class menu01Activity_3 extends AppCompatActivity {
         Intent intent=getIntent();
         final int resID=intent.getExtras().getInt("resID");
         final String CountryID=intent.getExtras().getString("CountryID");
-        final String PassportNumber=intent.getExtras().getString("PassportNumber");
+        PassportNumber=intent.getExtras().getString("PassportNumber");
+        NickName=intent.getExtras().getString("NickName");
+
 
         Button preBtn = (Button) findViewById(R.id.menu01_3_backbtn);
         preBtn.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +105,7 @@ public class menu01Activity_3 extends AppCompatActivity {
                 Bitmap captureView = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
                 File sdCard = Environment.getExternalStorageDirectory();
                 File dir = new File(sdCard.getAbsolutePath()+"/OGADA");
-                String fileName="OGADA_"+PassportNumber+"_"+CountryID+".jpeg";
+                String fileName="OGADA_"+NickName+"_"+CountryID2Name.get(CountryIDNumlist.indexOf(CountryID))+".jpeg";
                 FileOutputStream fos;
                 boolean isGrantStorage = grantExternalStoragePermission();  //퍼미션 허가 여부 확인
                 if (isGrantStorage) {

@@ -30,7 +30,7 @@ public class menu03Activity_2 extends AppCompatActivity {
         CountryName=intent.getExtras().getString("CountryNameStr");
 
         TextView CountryNameTextView = (TextView)findViewById(R.id.menu03_2_text01);
-        CountryNameTextView.setText(CountryName);
+        CountryNameTextView.setText(CountryName+"님의 "+CountryName+" 신고서");
 
         final File imgFile = new File(fileName);
         System.out.println(imgFile.getAbsolutePath());
