@@ -9,8 +9,9 @@
 
 # 개발환경
 
-* Window 10
-* Android Studio3.5
+* os : Window 10
+* develop tool : Android Studio3.5
+* tess-two : 9.0.0
 
 # 제작자 정보
 
