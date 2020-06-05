@@ -23,7 +23,7 @@
         android:textColor="@color/color_03"
         android:textStyle="bold"/>
 
-    <CameraSurfaceView
+    <com.ogada.CameraSurfaceView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/menu02_2_surface"
