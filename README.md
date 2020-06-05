@@ -18,5 +18,6 @@
 * 군산대학교 소프트웨어융합공학과
 * m.dyong2@gmail.com
 
-#  Tesseract Dataset Download Link
-* https://github.com/tesseract-ocr/tessdata
+# 참고 링크  
+- Tesseract Dataset Download Link : https://github.com/tesseract-ocr/tessdata
+- Use tess-two module : https://github.com/alexcohn/tess-two
