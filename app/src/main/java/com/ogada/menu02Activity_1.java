@@ -38,6 +38,14 @@ public class menu02Activity_1 extends AppCompatActivity {
             }
         });
 
+        Button preBtn = (Button) findViewById(R.id.menu02_1_backbtn);
+        preBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
     }
 
     @Override
