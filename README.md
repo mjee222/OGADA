@@ -18,5 +18,5 @@
 * 군산대학교 소프트웨어융합공학과
 * m.dyong2@gmail.com
 
-#  OpenCV
-* https://github.com/opencv/opencv/releases
+#  Tesseract Dataset Download Link
+* https://github.com/tesseract-ocr/tessdata
