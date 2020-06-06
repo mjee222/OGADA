@@ -13,6 +13,10 @@
 * develop tool : Android Studio3.5
 * tess-two : 9.0.0
 * OpenCV : 4.3.0
+* Android
+  - minSdkVersion : 26
+  - targetSdkVersion : 29
+  - complieSdkVersion : 29
 
 # 제작자 정보
 
@@ -24,4 +28,5 @@
 - Tesseract Dataset Download Link : https://github.com/tesseract-ocr/tessdata
 - Use tess-two module : https://github.com/alexcohn/tess-two
 - OpenCV Download : https://github.com/opencv/opencv/releases
+- Camera Example : https://brunch.co.kr/@mystoryg/55
 
