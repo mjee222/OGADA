@@ -6,26 +6,28 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.pm.PackageManager;
-import android.graphics.SurfaceTexture;
-import android.hardware.camera2.CameraDevice;
-import android.hardware.camera2.CameraManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Size;
-import android.view.Surface;
+import android.util.Log;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 
-public class menu02Activity_2 extends AppCompatActivity implements Camera2APIs.Camera2Interface, TextureView.SurfaceTextureListener {
+public class menu02Activity_2 extends AppCompatActivity {
 
-    Button PicBtn;
-    private TextureView mTextureView;
-    private Camera2APIs mCamera;
     private final int MY_PERMISSIONS_REQUEST_CAMERA=1001;
+    private TextureView mCameraTextureView;
+    private Preview mPreview;
+    private Button mCameraCaptureButton;
+
+    Activity mainActivity = this;
+
+    private static final String TAG = "MAINACTIVITY";
+
+    static final int REQUEST_CAMERA = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +35,10 @@ public class menu02Activity_2 extends AppCompatActivity implements Camera2APIs.C
         setContentView(R.layout.activity_menu02_2);
 
         grantCameraPermission();
+        mCameraCaptureButton = (Button) findViewById(R.id.menu02_2_picbtn);
+        mCameraTextureView = (TextureView) findViewById(R.id.menu02_2_cam);
 
-        mTextureView = (TextureView) findViewById(R.id.menu02_2_cam);
-        mTextureView.setSurfaceTextureListener(this);
-        mCamera = new Camera2APIs(this);
-
-        PicBtn = (Button) findViewById(R.id.menu02_2_picbtn);
-        PicBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
+        mPreview = new Preview(this, mCameraTextureView, mCameraCaptureButton);
 
 
         Button preBtn = (Button) findViewById(R.id.menu02_2_backbtn);
@@ -55,69 +50,51 @@ public class menu02Activity_2 extends AppCompatActivity implements Camera2APIs.C
         });
     }
 
-    private void openCamera() {
-        CameraManager cameraManager = mCamera.CameraManager_1(this);
-        String cameraId = mCamera.CameraCharacteristics_2(cameraManager);
-        mCamera.CameraDevice_3(cameraManager, cameraId);
-    }
 
     @Override
-    public void onCameraDeviceOpened(CameraDevice cameraDevice, Size cameraSize) {
-        SurfaceTexture texture = mTextureView.getSurfaceTexture();
-        texture.setDefaultBufferSize(cameraSize.getWidth(), cameraSize.getHeight());
-        Surface surface = new Surface(texture);
-
-        mCamera.CaptureSession_4(cameraDevice, surface);
-        mCamera.CaptureRequest_5(cameraDevice, surface);
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQUEST_CAMERA:
+                for (int i = 0; i < permissions.length; i++) {
+                    String permission = permissions[i];
+                    int grantResult = grantResults[i];
+                    if (permission.equals(Manifest.permission.CAMERA)) {
+                        if (grantResult == PackageManager.PERMISSION_GRANTED) {
+                            mCameraTextureView = (TextureView) findViewById(R.id.menu02_2_cam);
+                            mPreview = new Preview(mainActivity, mCameraTextureView, mCameraCaptureButton);
+                            mPreview.openCamera();
+                            Log.d(TAG, "mPreview set");
+                        } else {
+                            Toast.makeText(this, "Should have camera permission to run", Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+                    }
+                }
+                break;
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        if (mTextureView.isAvailable()) {
-            openCamera();
-        } else {
-            mTextureView.setSurfaceTextureListener(this);
-        }
-    }
-
-    /* Surface Callbacks */
-    @Override
-    public void onSurfaceTextureAvailable(SurfaceTexture surfaceTexture, int i, int i1) {
-        openCamera();
-    }
-
-    @Override
-    public void onSurfaceTextureSizeChanged(SurfaceTexture surfaceTexture, int i, int i1) {
-
-    }
-
-    @Override
-    public boolean onSurfaceTextureDestroyed(SurfaceTexture surfaceTexture) {
-        return true;
-    }
-
-    @Override
-    public void onSurfaceTextureUpdated(SurfaceTexture surfaceTexture) {
-
-    }
-
-    private void closeCamera() {
-        mCamera.closeCamera();
+        mPreview.onResume();
     }
 
     @Override
     protected void onPause() {
-        closeCamera();
         super.onPause();
+        mPreview.onPause();
     }
+
 
     @Override
     public void finish() {
         super.finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
+
+
 
     private void grantCameraPermission() {
         int permssionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
@@ -138,24 +115,5 @@ public class menu02Activity_2 extends AppCompatActivity implements Camera2APIs.C
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_CAMERA: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    Toast.makeText(this,"승인이 허가되어 있습니다.",Toast.LENGTH_LONG).show();
-
-                } else {
-                    Toast.makeText(this,"아직 승인받지 않았습니다.",Toast.LENGTH_LONG).show();
-                }
-                return;
-            }
-
-        }
-    }
 
 }
