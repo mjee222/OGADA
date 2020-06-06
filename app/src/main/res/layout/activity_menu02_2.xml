@@ -23,6 +23,8 @@
         android:textColor="@color/color_03"
         android:textStyle="bold"/>
 
+
+
     <TextureView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,7 +60,7 @@
             android:textSize="15dp"
             android:textColor="@color/color_01"
             android:textStyle="bold"
-            android:text="사각형 크기에 맞게 여권을 촬영해 주세요"/>
+            android:text="여권 정보가 잘 보이게 사진을 찍어주세요."/>
 
         <Button
             android:id="@+id/menu02_2_picbtn"

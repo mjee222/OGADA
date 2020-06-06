@@ -4,6 +4,7 @@ package com.ogada;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
@@ -30,6 +31,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -61,6 +63,7 @@ public class Preview extends Thread {
     private TextureView mTextureView;
     private String mCameraId = "0";
     private Button mCameraCaptureButton;
+    private File file;
 
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray(4);
 
@@ -71,19 +74,20 @@ public class Preview extends Thread {
         ORIENTATIONS.append(Surface.ROTATION_270, 180);
     }
 
-    public Preview(Context context, TextureView textureView, Button button3) {
+    public Preview(Context context, TextureView textureView, Button button3, File file1) {
         mContext = context;
         mTextureView = textureView;
 
 
         mCameraCaptureButton = button3;
-
+        file=file1;
 
         mCameraCaptureButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 takePicture();
+
             }
         });
 
@@ -288,11 +292,11 @@ public class Preview extends Thread {
             // Orientation
             int rotation = ((Activity) mContext).getWindowManager().getDefaultDisplay().getRotation();
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS.get(rotation));
-
-            Date date = new Date();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss");
-
-            final File file = new File(Environment.getExternalStorageDirectory() + "/DCIM", "pic_" + dateFormat.format(date) + ".jpg");
+//
+//            Date date = new Date();
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss");
+//
+//            final File file = new File(Environment.getExternalStorageDirectory() + "/DCIM", "pic_" + dateFormat.format(date) + ".jpg");
 
             ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener() {
                 @Override
@@ -304,7 +308,7 @@ public class Preview extends Thread {
                         byte[] bytes = new byte[buffer.capacity()];
                         buffer.get(bytes);
                         save(bytes);
-                        Log.d(TAG, "[junsu] save()");
+                        Log.d(TAG, "save()");
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -343,9 +347,9 @@ public class Preview extends Thread {
                 public void onCaptureCompleted(CameraCaptureSession session,
                                                CaptureRequest request, TotalCaptureResult result) {
                     super.onCaptureCompleted(session, request, result);
-                    Toast.makeText(mContext, "Saved:" + file, Toast.LENGTH_SHORT).show();
-                    delayPreview.postDelayed(mDelayPreviewRunnable, 1000);
-
+                    Toast.makeText(mContext, "사진이 촬영되었습니다.", Toast.LENGTH_SHORT).show();
+                    //delayPreview.postDelayed(mDelayPreviewRunnable, 1000);
+                    ((menu02Activity_2)mContext).NextPage();
 //                    startPreview();
                 }
 
