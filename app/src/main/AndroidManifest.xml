@@ -3,9 +3,7 @@
     package="com.ogada">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.CAMERA" />
-
 
     <application
         android:allowBackup="true"
@@ -14,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".menu03ListItem"></activity>
+        <activity android:name=".menu02Activity_Img2Text"></activity>
+        <activity android:name=".menu03ListItem" />
         <activity android:name=".menu01_selectPassport" />
         <activity android:name=".menu02Activity_4" />
         <activity android:name=".menu02Activity_3" />
