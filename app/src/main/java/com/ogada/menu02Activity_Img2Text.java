@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +39,11 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
     String dataPath="";
     String PicFileName;
 
-    String PassportNumber_data, LastName_data, FirstName_data, Nationality_data, Birth_data, Gender_data, IssuerCountry_data, PassportStart_data, PassportEnd_data, PassportType_data;
+    DBHelper dbHelper;
+    SQLiteDatabase db = null;
+
+    String PassportNumber_data, LastName_data, FirstName_data, Nationality_data, Birth_data, IssuerCountry_data, PassportStart_data, PassportEnd_data;
+    int Gender_data, PassportType_data;
     EditText PassportNumber_edit, LastName_edit, FirstName_edit, Nationality_edit, IssuerCountry_edit;
     TextView Birth_edit, PassportStart_edit, PassportEnd_edit;
     RadioGroup Gender_edit, PassportType_edit;
@@ -56,10 +62,12 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
         initEditView();
         initTess();
 
+        dbHelper = new DBHelper(this, MainActivity.dbVersion);
+        db = dbHelper.getWritableDatabase();
 
         ImageView testview = (ImageView)findViewById(R.id.img2text_text03);
         testview.setImageBitmap(Path2Bitmap(PicFileName));
-//        processImage(BitmapFactory.decodeResource(getResources(), R.drawable.passporttest2));
+//        OCR(BitmapFactory.decodeResource(getResources(), R.drawable.passporttest2));
     }
 
     // View 초기화
@@ -92,6 +100,64 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
         tess.init(dataPath, lang);
     }
 
+    // 뷰에 데이터 집어넣음
+    public void setDataInView(){
+        PassportNumber_edit.setText(PassportNumber_data);
+        LastName_edit.setText(LastName_data);
+        FirstName_edit.setText(FirstName_data);
+        Nationality_edit.setText(Nationality_data);
+        Birth_edit.setText(Birth_data);
+        Gender_edit.check(Gender_data);
+        IssuerCountry_edit.setText(IssuerCountry_data);
+        PassportStart_edit.setText(PassportStart_data);
+        PassportEnd_edit.setText(PassportEnd_data);
+        PassportType_edit.check(PassportType_data);
+    }
+
+    // 뷰에서 데이터 가져옴
+    public void getDataInView(){
+        PassportNumber_data = PassportNumber_edit.getText().toString();
+        LastName_data = LastName_edit.getText().toString();
+        FirstName_data = FirstName_edit.getText().toString();
+        Nationality_data = Nationality_edit.getText().toString();
+        Birth_data = Birth_edit.getText().toString();
+        IssuerCountry_data = IssuerCountry_edit.getText().toString();
+        PassportStart_data = PassportStart_edit.getText().toString();
+        PassportEnd_data = PassportEnd_edit.getText().toString();
+
+        switch (Gender_edit.getCheckedRadioButtonId()) {
+            case R.id.img2text_radioM:
+                Gender_data = 0;
+                break;
+            case R.id.img2text_radioF:
+                Gender_data = 1;
+                break;
+        }
+
+        switch (PassportType_edit.getCheckedRadioButtonId()) {
+            case R.id.img2text_radioPM:
+                PassportType_data = 0;
+                break;
+            case R.id.img2text_radioPS:
+                PassportType_data = 1;
+                break;
+            case R.id.img2text_radioPR:
+                PassportType_data = 2;
+                break;
+            case R.id.img2text_radioPO:
+                PassportType_data = 3;
+                break;
+
+        }
+    }
+
+    // DB에 값 저장
+    public void inputDB(){
+        String[] dataarr={PassportNumber_data, LastName_data, FirstName_data, Nationality_data, Birth_data, Gender_data, IssuerCountry_data, PassportStart_data, PassportEnd_data, PassportType_data};
+        DBHelper.Insert2Table(db,"Passport_Info", dataarr);
+    }
+
+
     //데이터 체크
     private void checkFile(File dir, String lang){
         if(!dir.exists()&&dir.mkdirs()){
@@ -119,33 +185,31 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
     }
 
     // 영상 회전
-    public static Bitmap rotateImage(Bitmap source, float angle) {
+    public Bitmap rotateImage(Bitmap source, float angle) {
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
     }
 
-    public Bitmap Img2GrayEdge(String imgPath){
-        File file = new File(imgPath); // 파일 불러오기
-        Bitmap image1=null;
-        Mat img1 = new Mat();
-        if(file.exists()) { // 파일이 존재한다면
-            Bitmap myBitmap = BitmapFactory.decodeFile(file.getAbsolutePath()); // 비트맵 생성
-            OpenCVLoader.initDebug(); // 이 코드를 선언해주지않으면 컴파일 에러 발생
-            Utils.bitmapToMat(myBitmap, img1);
-            Mat imageGray1 = new Mat();
-            Mat imageCny1 = new Mat();
-            Imgproc.cvtColor(img1, imageGray1, Imgproc.COLOR_BGR2GRAY); // GrayScale
-            //Imgproc.Canny(imageGray1, imageCny1, 10, 100, 3, true); // Canny Edge 검출
-            Imgproc.threshold(imageGray1, imageCny1, 150, 255, Imgproc.THRESH_BINARY); //Binary
-            image1 = Bitmap.createBitmap(imageCny1.cols(), imageCny1.rows(), Bitmap.Config.ARGB_8888); // 비트맵 생성
-            Utils.matToBitmap(imageCny1, image1); // Mat을 비트맵으로 변환
-        }
-        return image1;
+
+    public Bitmap ImagePreprocesing(Bitmap originalImg){
+        Bitmap image=null;
+        Mat img = new Mat();
+        Mat imageGray = new Mat();
+        Mat imageCny = new Mat();
+
+        Utils.bitmapToMat(originalImg, img);
+        Imgproc.cvtColor(img, imageGray, Imgproc.COLOR_BGR2GRAY); // GrayScale
+        //Imgproc.Canny(imageGray1, imageCny1, 10, 100, 3, true); // Canny Edge 검출
+        Imgproc.threshold(imageGray, imageCny, 150, 255, Imgproc.THRESH_BINARY); //Binary
+        image = Bitmap.createBitmap(imageCny.cols(), imageCny.rows(), Bitmap.Config.ARGB_8888); // 비트맵 생성
+        Utils.matToBitmap(imageCny, image); // Mat을 비트맵으로 변환
+
+        return image;
     }
 
 
-    public String processImage(Bitmap bitmap){
+    public String OCR(Bitmap bitmap){
         String OCRresult=null;
         tess.setImage(bitmap);
         OCRresult = tess.getUTF8Text();
