@@ -73,7 +73,7 @@ public class menu02Activity_2 extends AppCompatActivity {
 
 
     public void NextPage(){
-        Intent intent=new Intent(getApplicationContext(), menu02Activity_4.class);
+        Intent intent=new Intent(getApplicationContext(), menu02Activity_Img2Text.class);
         intent.putExtra("PicFileName", file.getAbsolutePath());
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

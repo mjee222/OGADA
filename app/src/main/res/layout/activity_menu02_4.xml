@@ -41,7 +41,7 @@
         android:textStyle="bold"/>
 
     <RelativeLayout
-        android:id="@+id/menu02_3_linear01"
+        android:id="@+id/menu02_4_linear01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/menu02_4_text02"
@@ -141,7 +141,7 @@
 
     <!--진행률-->
     <LinearLayout
-        android:id="@+id/menu02_1_bottom_layout"
+        android:id="@+id/menu02_4_bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
