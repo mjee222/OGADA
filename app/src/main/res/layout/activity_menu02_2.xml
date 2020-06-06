@@ -23,10 +23,10 @@
         android:textColor="@color/color_03"
         android:textStyle="bold"/>
 
-    <com.ogada.CameraSurfaceView
+    <TextureView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/menu02_2_surface"
+        android:id="@+id/menu02_2_cam"
         android:layout_below="@+id/menu02_2_text01"
         android:layout_above="@+id/menu02_2_linear"
         android:layout_margin="10dp"/>
