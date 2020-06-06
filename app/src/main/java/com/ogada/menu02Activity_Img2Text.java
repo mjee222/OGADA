@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
@@ -106,21 +107,23 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
     }
 
 
+    // 비트맵 영상 획득
     public Bitmap Path2Bitmap(String imgPath){
         File file = new File(imgPath); // 파일 불러오기
-        Bitmap image1=null;
-        Mat img1 = new Mat();
+        Bitmap image=null;
         if(file.exists()){
-            Bitmap myBitmap = BitmapFactory.decodeFile(file.getAbsolutePath()); // 비트맵 생성
-            OpenCVLoader.initDebug(); // 이 코드를 선언해주지않으면 컴파일 에러 발생
-            Utils.bitmapToMat(myBitmap, img1);
-            image1 = Bitmap.createBitmap(img1.cols(), img1.rows(), Bitmap.Config.ARGB_8888); // 비트맵 생성
-            Utils.matToBitmap(img1, image1); // Mat을 비트맵으로 변환
+            image = BitmapFactory.decodeFile(imgPath);
+            image = rotateImage(image, 90);
         }
-        return image1;
+        return image;
     }
 
-
+    // 영상 회전
+    public static Bitmap rotateImage(Bitmap source, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
+    }
 
     public Bitmap Img2GrayEdge(String imgPath){
         File file = new File(imgPath); // 파일 불러오기
@@ -141,22 +144,6 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
         return image1;
     }
 
-    public Bitmap Img2GrayEdge(int imgPath){
-        Drawable drawable = getResources().getDrawable(imgPath);// drawable 타입을 bitmap으로 변경
-        Bitmap myBitmap = ((BitmapDrawable)drawable).getBitmap();
-        Bitmap image1=null;
-        Mat img1 = new Mat();
-        OpenCVLoader.initDebug(); // 이 코드를 선언해주지않으면 컴파일 에러 발생
-        Utils.bitmapToMat(myBitmap, img1);
-        Mat imageGray1 = new Mat();
-        Mat imageCny1 = new Mat();
-        Imgproc.cvtColor(img1, imageGray1, Imgproc.COLOR_BGR2GRAY); // GrayScale
-        //Imgproc.Canny(imageGray1, imageCny1, 10, 100, 3, true); // Canny Edge 검출
-        Imgproc.threshold(imageGray1, imageCny1, 150, 255, Imgproc.THRESH_BINARY); //Binary
-        image1 = Bitmap.createBitmap(imageCny1.cols(), imageCny1.rows(), Bitmap.Config.ARGB_8888); // 비트맵 생성
-        Utils.matToBitmap(imageCny1, image1); // Mat을 비트맵으로 변환
-        return image1;
-    }
 
     public String processImage(Bitmap bitmap){
         String OCRresult=null;

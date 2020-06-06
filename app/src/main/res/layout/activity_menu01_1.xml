@@ -33,7 +33,7 @@
         android:padding="5dp"
         android:background="@color/color_03"
         android:hint="검색할 국가명을 입력하세요."
-        android:textSize="30dp"
+        android:textSize="15dp"
         android:textColor="@color/color_black"/>
 
 
