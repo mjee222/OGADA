@@ -12,6 +12,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -61,12 +63,38 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
         initEditView();
         initTess();
 
+        setData("M1234567", "SSAM", "JANG", "KOR","11 NOV 2012","F","KOREA","05 DEC 2018","05 DEC 2028","PM");
+        setDataInView();
+
         dbHelper = new DBHelper(this, MainActivity.dbVersion);
         db = dbHelper.getWritableDatabase();
 
-        ImageView testview = (ImageView)findViewById(R.id.img2text_text03);
-        testview.setImageBitmap(ImagePreprocesing(Path2Bitmap(PicFileName)));
+        //ImageView testview = (ImageView)findViewById(R.id.img2text_text03);
+        //testview.setImageBitmap(ImagePreprocesing(Path2Bitmap(PicFileName)));
+        //testview.setImageBitmap(ImagePreprocesing(bitmap));
+
 //        OCR(BitmapFactory.decodeResource(getResources(), R.drawable.passporttest2));
+
+
+        Button preBtn = (Button) findViewById(R.id.img2text_backbtn);
+        preBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        Button goBtn = (Button) findViewById(R.id.img2text_gobtn);
+        goBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                inputDB();
+                Intent intent = new Intent(getApplicationContext(), menu02Activity_4.class);
+                intent.putExtra("PassportNumber", PassportNumber_data);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
     }
 
     // View 초기화
@@ -97,6 +125,19 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
         String lang = "kor+eng";
         tess = new TessBaseAPI();
         tess.init(dataPath, lang);
+    }
+
+    public void setData(String passportnumber, String lastname, String firstname, String nationality, String birth, String gender, String issuercountry, String passportstart, String passportend, String passporttype){
+        PassportNumber_data=passportnumber;
+        LastName_data=lastname;
+        FirstName_data=firstname;
+        Nationality_data=nationality;
+        Birth_data=birth;
+        Gender_data=gender;
+        IssuerCountry_data=issuercountry;
+        PassportStart_data=passportstart;
+        PassportEnd_data=passportend;
+        PassportType_data=passporttype;
     }
 
     // 뷰에 데이터 집어넣음

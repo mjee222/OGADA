@@ -52,7 +52,7 @@
 
 
         <!-- ################# 여권 번호 ################### -->
-        <ImageView
+        <TextView
             android:id="@+id/img2text_text03"
             android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="11dp"
             android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/img2text_edittext03"
@@ -259,7 +259,7 @@
         android:textColor="@color/color_03"
         android:textSize="20dp"/>
     <Button
-        android:id="@+id/menu02_4_gobtn"
+        android:id="@+id/img2text_gobtn"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:text="작성"
