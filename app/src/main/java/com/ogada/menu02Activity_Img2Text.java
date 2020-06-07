@@ -196,18 +196,22 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
 
         switch (data){
             case "M":
-            case "PM":
-                result=0;
+                result=R.id.img2text_radioM;
                 break;
             case "F":
+                result=R.id.img2text_radioF;
+                break;
+            case "PM":
+                result=R.id.img2text_radioPM;
+                break;
             case "PS":
-                result=1;
+                result=R.id.img2text_radioPS;
                 break;
             case "PR":
-                result=2;
+                result=R.id.img2text_radioPR;
                 break;
             case "PO":
-                result=3;
+                result=R.id.img2text_radioPO;
                 break;
         }
 
