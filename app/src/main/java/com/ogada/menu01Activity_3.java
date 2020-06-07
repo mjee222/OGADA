@@ -39,15 +39,17 @@ import static com.ogada.DBHelper.LandingCardColNames;
 public class menu01Activity_3 extends AppCompatActivity {
     private static final String LandingCardName="Landing_Card";
     private static final String PassportInfoName="Passport_Info";
+    private static final String User_Info="User_Info";
     ImageView imageView;
 
     DBHelper dbHelper;
     SQLiteDatabase db = null;
     private String PassportNumber="", NickName="";
-    ArrayList<String> notinPassportInfo_kor = new ArrayList<>(Arrays.asList(new String[]{"직업", "고향", "비자 번호", "비자 발급일", "비자 만료일", "비자 발급처", "항공기 번호", "출발 도시", "머무는 날", "머무는 곳의 주소", "서명", "주소", "방문 목적(visit)"}));
-    ArrayList<String> notinPassportInfo_eng = new ArrayList<>(Arrays.asList(new String[]{"Job", "Hometown", "VisaNumber", "VisaStart", "VisaEnd", "VisaIssuer", "AirplaneNumber", "BoardingCity", "StayDay", "StayAddress", "Sign", "Address", "Others"}));
+    ArrayList<String> notinPassportInfo_kor = new ArrayList<>(Arrays.asList(new String[]{"고향", "비자 번호", "비자 발급일", "비자 만료일", "비자 발급처", "항공기 번호", "출발 도시", "머무는 날", "머무는 곳의 주소", "서명", "방문 목적(visit)"}));
+    ArrayList<String> notinPassportInfo_eng = new ArrayList<>(Arrays.asList(new String[]{ "Hometown", "VisaNumber", "VisaStart", "VisaEnd", "VisaIssuer", "AirplaneNumber", "BoardingCity", "StayDay", "StayAddress", "Sign", "Others"}));
     ArrayList<String> CountryIDNumlist = new ArrayList<>(Arrays.asList(new String[]{"001", "002", "003", "004", "005"}));
     ArrayList<String> CountryID2Name = new ArrayList<>(Arrays.asList(new String[]{"대한민국", "일본", "중국", "홍콩", "대만"}));
+    ArrayList<String> OtherInfo_eng = new ArrayList<>(Arrays.asList(new String[]{"Email", "PhoneNumber", "Email", "Address"}));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,12 +85,21 @@ public class menu01Activity_3 extends AppCompatActivity {
         for(int i=0; i<data_arr.size(); i++){
             int xy[] =getXY(data_arr.get(i)[1], deviceDpi);
             String dataName=data_arr.get(i)[0];
+
+            if(dataName.equals("Job"))  dataName="Email";
+
             int PassportIdx=notinPassportInfo_eng.indexOf(dataName);
             if(-1<PassportIdx){
                 bm = writeOnDrawable(bm, notinPassportInfo_kor.get(PassportIdx), 50, xy[0], xy[1]);
                 continue;
             }
-            String data_info=getUserInfo(db, dataName, PassportNumber);
+            int tempIdx = OtherInfo_eng.indexOf(dataName);
+            String data_info;
+            if(-1<tempIdx){
+                data_info = getOtherUserInfo(db, dataName, PassportNumber);
+            }else {
+                data_info = getUserInfo(db, dataName, PassportNumber);
+            }
             bm = writeOnDrawable(bm, data_info, 50, xy[0], xy[1]);
         }
         //int temp[]=getXY(db, CountryID, "LastName");
@@ -152,6 +163,17 @@ public class menu01Activity_3 extends AppCompatActivity {
         String info="";
         Cursor cursor = null;
         String query = "SELECT " + colname + " FROM " + PassportInfoName + " WHERE PassportNumber='" + PassportNumber + "';";
+        cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            info = cursor.getString(0);
+        }
+        return info;
+    }
+
+    public String getOtherUserInfo(SQLiteDatabase db, String colname, String PassportNumber){
+        String info="";
+        Cursor cursor = null;
+        String query = "SELECT " + colname + " FROM " + User_Info + " WHERE PassportNumber='" + PassportNumber + "';";
         cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
             info = cursor.getString(0);
