@@ -42,8 +42,7 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
     DBHelper dbHelper;
     SQLiteDatabase db = null;
 
-    String PassportNumber_data, LastName_data, FirstName_data, Nationality_data, Birth_data, IssuerCountry_data, PassportStart_data, PassportEnd_data;
-    int Gender_data, PassportType_data;
+    String PassportNumber_data, LastName_data, FirstName_data, Nationality_data, Birth_data, IssuerCountry_data, PassportStart_data, PassportEnd_data, Gender_data, PassportType_data;;
     EditText PassportNumber_edit, LastName_edit, FirstName_edit, Nationality_edit, IssuerCountry_edit;
     TextView Birth_edit, PassportStart_edit, PassportEnd_edit;
     RadioGroup Gender_edit, PassportType_edit;
@@ -66,7 +65,7 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
         db = dbHelper.getWritableDatabase();
 
         ImageView testview = (ImageView)findViewById(R.id.img2text_text03);
-        testview.setImageBitmap(Path2Bitmap(PicFileName));
+        testview.setImageBitmap(ImagePreprocesing(Path2Bitmap(PicFileName)));
 //        OCR(BitmapFactory.decodeResource(getResources(), R.drawable.passporttest2));
     }
 
@@ -107,11 +106,11 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
         FirstName_edit.setText(FirstName_data);
         Nationality_edit.setText(Nationality_data);
         Birth_edit.setText(Birth_data);
-        Gender_edit.check(Gender_data);
+        Gender_edit.check(getRadioIndex(Gender_data));
         IssuerCountry_edit.setText(IssuerCountry_data);
         PassportStart_edit.setText(PassportStart_data);
         PassportEnd_edit.setText(PassportEnd_data);
-        PassportType_edit.check(PassportType_data);
+        PassportType_edit.check(getRadioIndex(PassportType_data));
     }
 
     // 뷰에서 데이터 가져옴
@@ -127,32 +126,57 @@ public class menu02Activity_Img2Text extends AppCompatActivity {
 
         switch (Gender_edit.getCheckedRadioButtonId()) {
             case R.id.img2text_radioM:
-                Gender_data = 0;
+                Gender_data = "M";
                 break;
             case R.id.img2text_radioF:
-                Gender_data = 1;
+                Gender_data = "F";
                 break;
         }
 
         switch (PassportType_edit.getCheckedRadioButtonId()) {
             case R.id.img2text_radioPM:
-                PassportType_data = 0;
+                PassportType_data = "PM";
                 break;
             case R.id.img2text_radioPS:
-                PassportType_data = 1;
+                PassportType_data = "PS";
                 break;
             case R.id.img2text_radioPR:
-                PassportType_data = 2;
+                PassportType_data = "PR";
                 break;
             case R.id.img2text_radioPO:
-                PassportType_data = 3;
+                PassportType_data = "PO";
                 break;
 
         }
     }
 
+    public int getRadioIndex(String data){
+        int result=-1;
+
+        switch (data){
+            case "M":
+            case "PM":
+                result=0;
+                break;
+            case "F":
+            case "PS":
+                result=1;
+                break;
+            case "PR":
+                result=2;
+                break;
+            case "PO":
+                result=3;
+                break;
+        }
+
+        return result;
+    }
+
+
     // DB에 값 저장
     public void inputDB(){
+        getDataInView();
         String[] dataarr={PassportNumber_data, LastName_data, FirstName_data, Nationality_data, Birth_data, Gender_data, IssuerCountry_data, PassportStart_data, PassportEnd_data, PassportType_data};
         DBHelper.Insert2Table(db,"Passport_Info", dataarr);
     }
