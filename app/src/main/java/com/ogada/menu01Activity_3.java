@@ -44,8 +44,8 @@ public class menu01Activity_3 extends AppCompatActivity {
     DBHelper dbHelper;
     SQLiteDatabase db = null;
     private String PassportNumber="", NickName="";
-    ArrayList<String> notinPassportInfo_kor = new ArrayList<>(Arrays.asList(new String[]{"직업", "고향", "비자 번호", "비자 발급일", "비자 만료일", "비자 발급처", "항공기 번호", "출발 도시", "머무는 날", "머무는 곳의 주소", "서명", "주소"}));
-    ArrayList<String> notinPassportInfo_eng = new ArrayList<>(Arrays.asList(new String[]{"Job", "Hometown", "VisaNumber", "VisaStart", "VisaEnd", "VisaIssuer", "AirplaneNumber", "BoardingCity", "StayDay", "StayAddress", "Sign", "Address"}));
+    ArrayList<String> notinPassportInfo_kor = new ArrayList<>(Arrays.asList(new String[]{"직업", "고향", "비자 번호", "비자 발급일", "비자 만료일", "비자 발급처", "항공기 번호", "출발 도시", "머무는 날", "머무는 곳의 주소", "서명", "주소", "방문 목적(visit)"}));
+    ArrayList<String> notinPassportInfo_eng = new ArrayList<>(Arrays.asList(new String[]{"Job", "Hometown", "VisaNumber", "VisaStart", "VisaEnd", "VisaIssuer", "AirplaneNumber", "BoardingCity", "StayDay", "StayAddress", "Sign", "Address", "Others"}));
     ArrayList<String> CountryIDNumlist = new ArrayList<>(Arrays.asList(new String[]{"001", "002", "003", "004", "005"}));
     ArrayList<String> CountryID2Name = new ArrayList<>(Arrays.asList(new String[]{"대한민국", "일본", "중국", "홍콩", "대만"}));
 

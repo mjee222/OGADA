@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     // DB
     DBHelper dbHelper;
     SQLiteDatabase db = null;
-    public static final int dbVersion=16;
+    public static final int dbVersion=17;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
