@@ -54,6 +54,19 @@
             android:scaleType="centerInside"/>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/menu02_1_backbtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="취소"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/color_01"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
     
     <!--진행률-->
     <LinearLayout
@@ -71,6 +84,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/yes_dot"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_dot"
             android:background="@android:color/transparent"/>
 
         <ImageView

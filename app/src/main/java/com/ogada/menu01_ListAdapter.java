@@ -81,7 +81,4 @@ public class menu01_ListAdapter extends BaseAdapter {
         listViewItemList.add(item);
     }
 
-
-
-
 }

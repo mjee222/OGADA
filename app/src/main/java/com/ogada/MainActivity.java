@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     // DB
     DBHelper dbHelper;
     SQLiteDatabase db = null;
-    public static final int dbVersion=14;
+    public static final int dbVersion=17;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         menu01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), menu01Activity_1.class);
+                Intent intent=new Intent(getApplicationContext(), menu01_selectPassport.class);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }

@@ -2,13 +2,20 @@ package com.ogada;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class menu01Activity_2 extends AppCompatActivity {
@@ -17,6 +24,7 @@ public class menu01Activity_2 extends AppCompatActivity {
     DBHelper dbHelper;
     SQLiteDatabase db = null;
     private static String CountryID="";
+    private String PassportNumber="", NickName="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,8 @@ public class menu01Activity_2 extends AppCompatActivity {
         Intent intent=getIntent();
         String CountryNameKor=intent.getExtras().getString("CountryNameKor");
         String CountryNameEng=intent.getExtras().getString("CountryNameEng");
+        PassportNumber=intent.getExtras().getString("PassportNumber");
+        NickName=intent.getExtras().getString("NickName");
 
         TextView CountryNameTextView=(TextView)findViewById(R.id.menu01_2_text02);
         CountryNameTextView.setText(CountryNameKor);
@@ -43,6 +53,8 @@ public class menu01Activity_2 extends AppCompatActivity {
                 Intent intent=new Intent(getApplicationContext(), menu01Activity_3.class);
                 intent.putExtra("resID", resID);
                 intent.putExtra("CountryID", CountryID);
+                intent.putExtra("PassportNumber", PassportNumber);
+                intent.putExtra("NickName", NickName);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }

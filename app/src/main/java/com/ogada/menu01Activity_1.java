@@ -10,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ public class menu01Activity_1 extends AppCompatActivity {
     private ListView listView;
     private  menu01_ListAdapter adapter;
 
+    private String PassportNumber="", NickName="";
+
     // db
     DBHelper dbHelper;
     SQLiteDatabase db = null;
@@ -29,6 +32,10 @@ public class menu01Activity_1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu01_1);
+
+        Intent intent=getIntent();
+        PassportNumber=intent.getExtras().getString("PassportNumber");
+        NickName=intent.getExtras().getString("NickName");
 
         adapter = new menu01_ListAdapter();
 
@@ -52,6 +59,14 @@ public class menu01Activity_1 extends AppCompatActivity {
             }
         });
 
+        Button preBtn = (Button)findViewById(R.id.menu01_1_backbtn);
+        preBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
 
     }
 
@@ -72,6 +87,8 @@ public class menu01Activity_1 extends AppCompatActivity {
 
     public void ShowBlankLandingCard(String CountryNameKor, String CountryNameEng){
         Intent intent=new Intent(getApplicationContext(), menu01Activity_2.class);
+        intent.putExtra("PassportNumber", PassportNumber);
+        intent.putExtra("NickName", NickName);
         intent.putExtra("CountryNameKor", CountryNameKor);
         intent.putExtra("CountryNameEng", CountryNameEng);
         startActivity(intent);

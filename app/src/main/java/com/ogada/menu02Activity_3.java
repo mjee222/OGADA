@@ -15,6 +15,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class menu02Activity_3 extends AppCompatActivity {
 
     DatePickerDialog Date_dialog;
@@ -23,10 +28,38 @@ public class menu02Activity_3 extends AppCompatActivity {
 
     String PassportNumber_data, LastName_data, FirstName_data, Nationality_data, Birth_data, Gender_data, IssuerCountry_data, PassportStart_data, PassportEnd_data, PassportType_data;
 
+    long now;
+    Date TodayDate;
+    SimpleDateFormat weekdayFormat, dayFormat, monthFormat, yearFormat;
+    int TweekDay, Tyear, Tmonth, Tday;
+    String passport_start_date;
+    int[] dateint;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu02_3);
+
+
+        TodayDate = Calendar.getInstance().getTime();
+        dayFormat = new SimpleDateFormat("dd", Locale.getDefault());
+        monthFormat = new SimpleDateFormat("MM", Locale.getDefault());
+        yearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
+
+        Tyear = Integer.parseInt(yearFormat.format(TodayDate));
+        Tmonth = Integer.parseInt(monthFormat.format(TodayDate));
+        Tday = Integer.parseInt(dayFormat.format(TodayDate));
+
+        final TextView PassportStart = (TextView) findViewById(R.id.menu02_3_edittext10);
+        final TextView PassportEnd = (TextView) findViewById(R.id.menu02_3_edittext11);
+
+        final TextView Birth = (TextView) findViewById(R.id.menu02_3_edittext07);
+        Birth.setText((Tyear-20) + "년 " + Tmonth + "월 " + Tday +"일");
+        PassportStart.setText(Tyear + "년 " + Tmonth + "월 " + Tday +"일");
+        passport_start_date=PassportStart.getText().toString();
+        dateint=date2int(passport_start_date);
+        PassportEnd.setText(dateint[0]+10 + "년 " + dateint[1] + "월 " + dateint[2] +"일");
+
 
         dbHelper = new DBHelper(this, MainActivity.dbVersion);
         db = dbHelper.getWritableDatabase();
@@ -43,7 +76,7 @@ public class menu02Activity_3 extends AppCompatActivity {
         final EditText Nationality = (EditText) findViewById(R.id.menu02_3_edittext06);
 
         //생년월일
-        final TextView Birth = (TextView) findViewById(R.id.menu02_3_edittext07);
+
         ImageButton BirthBtn = (ImageButton) findViewById(R.id.menu02_3_birthbtn);
         Birth_data = Birth.getText().toString();
         BirthBtn.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +84,7 @@ public class menu02Activity_3 extends AppCompatActivity {
             public void onClick(View view) {
                 Date_dialog = new DatePickerDialog(menu02Activity_3.this, new DatePickerDialog.OnDateSetListener(){
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        Birth.setText(year + "년 " + (monthOfYear+1) + "월 " + dayOfMonth +"일 ");
+                        Birth.setText(year + "년 " + (monthOfYear+1) + "월 " + dayOfMonth +"일");
                     }}, 1998, 6, 30);
                 Date_dialog.show();
             }
@@ -67,29 +100,35 @@ public class menu02Activity_3 extends AppCompatActivity {
         final EditText IssuerCountry = (EditText) findViewById(R.id.menu02_3_edittext09);
 
         //여권 발급일
-        final TextView PassportStart = (TextView) findViewById(R.id.menu02_3_edittext10);
+
+
+        passport_start_date=PassportStart.getText().toString();
+        dateint=date2int(passport_start_date);
         ImageButton PassportStartBtn = (ImageButton) findViewById(R.id.menu02_3_startdatehbtn);
         PassportStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Date_dialog = new DatePickerDialog(menu02Activity_3.this, new DatePickerDialog.OnDateSetListener(){
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        PassportStart.setText(year + "년 " + (monthOfYear+1) + "월 " + dayOfMonth +"일 ");
-                    }}, 1998, 6, 30);
+                        PassportStart.setText(year + "년 " + (monthOfYear+1) + "월 " + dayOfMonth +"일");
+                        passport_start_date=PassportStart.getText().toString();
+                        dateint=date2int(passport_start_date);
+                        PassportEnd.setText(dateint[0]+10 + "년 " + dateint[1] + "월 " + dateint[2] +"일");
+                    }}, Tyear, Tmonth, Tday);
                 Date_dialog.show();
             }
         });
 
         //여권 만료일
-        final TextView PassportEnd = (TextView) findViewById(R.id.menu02_3_edittext11);
+
         ImageButton PassportEndBtn = (ImageButton) findViewById(R.id.menu02_3_enddatehbtn);
         PassportEndBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Date_dialog = new DatePickerDialog(menu02Activity_3.this, new DatePickerDialog.OnDateSetListener(){
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        PassportEnd.setText(year + "년 " + (monthOfYear+1) + "월 " + dayOfMonth +"일 ");
-                    }}, 1998, 6, 30);
+                        PassportEnd.setText(year + "년 " + (monthOfYear+1) + "월 " + dayOfMonth +"일");
+                    }}, dateint[0]+10, dateint[1], dateint[2]);
                 Date_dialog.show();
             }
         });
@@ -161,6 +200,20 @@ public class menu02Activity_3 extends AppCompatActivity {
 
     }
 
+    public int[] date2int(String date){
+        date = date.replaceAll(" ","");
+        String[] yearArr = date.split("년");
+        String[] monthArr = yearArr[1].split("월");
+        String[] dayArr = monthArr[1].split("일");
+
+        int year = Integer.parseInt(yearArr[0]);
+        int month = Integer.parseInt(monthArr[0]);
+        int day = Integer.parseInt(dayArr[0]);
+
+        int[] intdate = {year, month, day};
+
+        return intdate;
+    }
 
     @Override
     public void finish(){

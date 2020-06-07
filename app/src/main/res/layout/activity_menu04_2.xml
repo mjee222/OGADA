@@ -274,12 +274,12 @@
                 <TextView
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="이메일"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+                    android:text="직업"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
                 <TextView
                     android:id="@+id/menu04_2_text13"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="이메일"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
+                    android:text="직업"     android:textColor="@color/color_01"  android:textStyle="bold"  android:textSize="20dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -333,5 +333,29 @@
         android:textColor="@color/color_03"
         android:textSize="20dp"/>
 
+    <!--진행률-->
+    <LinearLayout
+        android:id="@+id/menu03_1_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_dot"
+            android:background="@android:color/transparent"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/yes_dot"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

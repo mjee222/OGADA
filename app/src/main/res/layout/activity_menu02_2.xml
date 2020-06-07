@@ -23,4 +23,97 @@
         android:textColor="@color/color_03"
         android:textStyle="bold"/>
 
+
+
+    <TextureView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menu02_2_cam"
+        android:layout_below="@+id/menu02_2_text01"
+        android:layout_above="@+id/menu02_2_linear"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/menu02_2_backbtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="취소"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/color_01"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menu02_2_linear"
+        android:layout_above="@+id/menu02_2_bottom_layout"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="15dp"
+            android:textColor="@color/color_01"
+            android:textStyle="bold"
+            android:text="여권 정보가 잘 보이게 사진을 찍어주세요."/>
+
+        <Button
+            android:id="@+id/menu02_2_picbtn"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="촬    영"
+            android:textSize="20dp"
+            android:textColor="@color/color_03"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@color/color_02"/>
+
+    </LinearLayout>
+
+
+    <!--진행률-->
+    <LinearLayout
+        android:id="@+id/menu02_2_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_dot"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/yes_dot"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_dot"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_dot"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
 </RelativeLayout>

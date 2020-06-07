@@ -41,7 +41,7 @@
         android:textStyle="bold"/>
 
     <RelativeLayout
-        android:id="@+id/menu02_3_linear01"
+        android:id="@+id/menu02_4_linear01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/menu02_4_text02"
@@ -88,13 +88,13 @@
             android:id="@+id/menu02_4_text05"
             android:layout_width="wrap_content" android:layout_height="wrap_content"    android:layout_marginTop="11dp"
             android:layout_alignParentLeft="true"   android:layout_alignTop="@+id/menu02_4_edittext05"
-            android:text="이메일"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
+            android:text="직업"    android:textStyle="bold"    android:textColor="@color/color_black"  android:textSize="20dp"/>
 
         <EditText
             android:id="@+id/menu02_4_edittext05"
             android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:layout_below="@+id/menu02_4_edittext04"  android:layout_alignLeft="@+id/menu02_4_edittext03"    android:layout_toRightOf="@+id/menu02_4_text05"
-            android:hint="이메일을 입력하세요"     android:textColor="@color/color_01"    android:textSize="20dp"/>
+            android:hint="직업을 입력하세요"     android:textColor="@color/color_01"    android:textSize="20dp"/>
 
 
         <!-- ################# 주소 ################### -->
@@ -141,7 +141,7 @@
 
     <!--진행률-->
     <LinearLayout
-        android:id="@+id/menu02_1_bottom_layout"
+        android:id="@+id/menu02_4_bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -150,6 +150,12 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_dot"
+            android:background="@android:color/transparent"/>
 
         <ImageView
             android:layout_width="wrap_content"

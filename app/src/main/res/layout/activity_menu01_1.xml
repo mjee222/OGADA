@@ -33,8 +33,9 @@
         android:padding="5dp"
         android:background="@color/color_03"
         android:hint="검색할 국가명을 입력하세요."
-        android:textSize="30dp"
+        android:textSize="15dp"
         android:textColor="@color/color_black"/>
+
 
     <ListView
         android:id="@+id/menu01_listview01"
@@ -46,16 +47,38 @@
         android:padding="5dp"
         android:background="@color/color_03"/>
 
+
+    <Button
+        android:id="@+id/menu01_1_backbtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="취소"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/color_01"
+        android:textColor="@color/color_03"
+        android:textSize="20dp"/>
     <!--진행률-->
     <LinearLayout
         android:id="@+id/menu01_bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:gravity="center"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_dot"
+            android:background="@android:color/transparent"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -75,7 +98,9 @@
             android:src="@drawable/no_dot"
             android:background="@android:color/transparent"/>
 
-        </LinearLayout>
+
+
+    </LinearLayout>
 
 
 
